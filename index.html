@@ -131,30 +131,44 @@
         margin-bottom: 10px;
     }
 
-    /* --- МОБИЛЬНАЯ АДАПТАЦИЯ --- */
+    /* --- МОБИЛЬНАЯ АДАПТАЦИЯ (ПЕРВАЯ ВЕРСИЯ) --- */
     @media (max-width: 768px) {
         header {
             padding: 15px 20px;
-            min-height: 80px;
+            flex-direction: column;
+            text-align: center;
+            min-height: auto;
+        }
+
+        .header-center {
+            width: 100%;
+        }
+
+        header img {
+            display: none; /* Скрываем ромашки на мобильных */
         }
 
         .header-center h1 {
-            font-size: 32px;
+            font-size: 28px;
         }
 
         .header-center p {
             font-size: 16px;
         }
 
-        header img {
-            width: 60px;
-            height: 60px;
-        }
-
         .layout {
             grid-template-columns: 1fr;
             gap: 15px;
             padding: 15px;
+        }
+
+        .ad-block {
+            min-height: auto;
+            order: 3; /* Реклама в конце на мобильных */
+        }
+
+        .news {
+            order: 1; /* Новости первыми */
         }
 
         .news-item {
@@ -170,33 +184,12 @@
             width: 100%;
             height: 200px;
         }
-
-        .ad-block {
-            min-height: auto;
-        }
     }
 
     @media (max-width: 480px) {
-        header {
-            padding: 12px 15px;
-        }
-
-        .header-center h1 {
-            font-size: 24px;
-        }
-
-        .header-center p {
-            font-size: 14px;
-        }
-
-        header img {
-            width: 50px;
-            height: 50px;
-        }
-
         .layout {
             padding: 10px;
-            gap: 15px;
+            gap: 10px;
         }
 
         .news-item {
@@ -208,13 +201,12 @@
             height: 180px;
         }
 
-        .news-item p {
-            font-size: 15px;
-            line-height: 1.5;
+        .ad-block {
+            padding: 8px;
         }
 
-        .news-item b {
-            font-size: 16px;
+        .ad-item {
+            padding: 8px;
         }
     }
 </style>
