@@ -19,44 +19,34 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 15px 20px;
+        padding: 20px 40px;
         background: #007fe6;
         color: white;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        min-height: 80px;
-        flex-wrap: wrap;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .header-center {
         text-align: center;
         flex-grow: 1;
-        order: 2;
-        min-width: 200px;
     }
 
     .header-center h1 {
-        font-size: clamp(24px, 5vw, 40px);
-        margin: 5px 0;
+        font-size: 40px;
+        margin: 0;
     }
 
     .header-center p {
         margin: 0;
-        font-size: clamp(14px, 3vw, 20px);
+        font-size: 20px;
         color: #e9e9e9;
     }
 
     header img {
-        width: 60px;
-        height: 60px;
+        width: 80px;
+        height: 80px;
         object-fit: contain;
-    }
-
-    .header-left {
-        order: 1;
-    }
-
-    .header-right {
-        order: 3;
     }
 
     .layout {
@@ -97,13 +87,13 @@
     .news {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 25px;
     }
 
     .news-item {
         display: flex;
-        background: #f8f8f8; /* Светлый фон вместо коричневого */
-        padding: 20px;
+        background: #f8f8f8;
+        padding: 25px;
         gap: 20px;
         box-shadow: 0 3px 10px rgba(0,0,0,0.15);
         border-radius: 10px;
@@ -115,43 +105,50 @@
     }
 
     .news-item img {
-        width: 160px;
-        height: 120px;
+        width: 200px;
+        height: 150px;
         object-fit: cover;
         border-radius: 6px;
         flex-shrink: 0;
     }
 
+    .news-content {
+        flex: 1;
+    }
+
     .news-item p {
         margin: 0;
-        white-space: pre-line;
-        color: #333; /* Темный текст для контраста */
-        line-height: 1.5;
+        white-space: normal;
+        color: #333;
+        line-height: 1.6;
+        font-size: 16px;
     }
 
     .news-item b {
-        color: #007fe6; /* Синий цвет для заголовков как в хедере */
+        color: #007fe6;
+        font-size: 18px;
+        display: block;
+        margin-bottom: 10px;
     }
 
     /* --- МОБИЛЬНАЯ АДАПТАЦИЯ --- */
     @media (max-width: 768px) {
         header {
-            padding: 10px 15px;
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .header-center {
-            order: 1;
-            width: 100%;
-        }
-
-        .header-left, .header-right {
-            display: none; /* Скрываем ромашки на мобильных */
+            padding: 15px 20px;
+            min-height: 80px;
         }
 
         .header-center h1 {
-            font-size: 28px;
+            font-size: 32px;
+        }
+
+        .header-center p {
+            font-size: 16px;
+        }
+
+        header img {
+            width: 60px;
+            height: 60px;
         }
 
         .layout {
@@ -160,18 +157,9 @@
             padding: 15px;
         }
 
-        .ad-block {
-            min-height: auto;
-            order: 3; /* Реклама в конце на мобильных */
-        }
-
-        .news {
-            order: 1; /* Новости первыми */
-        }
-
         .news-item {
             flex-direction: column;
-            padding: 15px;
+            padding: 20px;
         }
 
         .news-item.reverse {
@@ -180,31 +168,53 @@
 
         .news-item img {
             width: 100%;
-            height: 180px;
+            height: 200px;
+        }
+
+        .ad-block {
+            min-height: auto;
         }
     }
 
     @media (max-width: 480px) {
+        header {
+            padding: 12px 15px;
+        }
+
+        .header-center h1 {
+            font-size: 24px;
+        }
+
+        .header-center p {
+            font-size: 14px;
+        }
+
+        header img {
+            width: 50px;
+            height: 50px;
+        }
+
         .layout {
             padding: 10px;
-            gap: 10px;
+            gap: 15px;
         }
 
         .news-item {
-            padding: 12px;
-            gap: 12px;
+            padding: 15px;
+            gap: 15px;
         }
 
         .news-item img {
-            height: 150px;
+            height: 180px;
         }
 
-        .ad-block {
-            padding: 8px;
+        .news-item p {
+            font-size: 15px;
+            line-height: 1.5;
         }
 
-        .ad-item {
-            padding: 8px;
+        .news-item b {
+            font-size: 16px;
         }
     }
 </style>
@@ -212,16 +222,12 @@
 <body>
 
 <header>
-    <div class="header-left">
-        <img src="фото/ромашка.jpg" alt="ромашка">
-    </div>
+    <img src="фото/ромашка.jpg" alt="ромашка">
     <div class="header-center">
         <h1>На круглой планете</h1>
         <p>все о жизни на Ромашковой долине</p>
     </div>
-    <div class="header-right">
-        <img src="фото/ромашка.jpg" alt="ромашка">
-    </div>
+    <img src="фото/ромашка.jpg" alt="ромашка">
 </header>
 
 <div class="layout">
@@ -252,26 +258,35 @@
 
         <div class="news-item">
             <img src="фото/новость1.jpg">
-            <p><b>«Карыч запускает клуб интеллигентных бесед»</b>
+            <div class="news-content">
+                <p><b>«Карыч запускает клуб интеллигентных бесед»</b>
 
-В Ромашковой долине открылась новая традиция: Карыч объявил о старте клуба интеллигентных бесед...
-            </p>
+В Ромашковой долине открылась новая традиция: Карыч объявил о старте клуба интеллигентных бесед. Он уверен, что мягкие споры о науке и культуре помогут смешарикам смотреть на привычные вещи иначе.
+
+На первой встрече Лосяш обсуждал необычные гипотезы о формах облаков, а Нюша предложила рубрику о модных тенденциях. По словам Карыча, каждое заседание будет полезным и познавательным.</p>
+            </div>
         </div>
 
         <div class="news-item reverse">
             <img src="фото/новость2.jpg">
-            <p><b>«Современные технологии: Лосяш презентовал робота-помощника»</b>
+            <div class="news-content">
+                <p><b>«Современные технологии: Лосяш презентовал робота-помощника»</b>
 
-Лосяш представил жителям долины свой новый проект...
-            </p>
+Лосяш представил жителям долины свой новый проект — компактного робота-помощника. Машина умеет сортировать инструменты, записывать заметки и даже корректно отвечать на вопросы Трюши.
+
+Смешарики поначалу относились к изобретению с осторожностью, но быстро оценили его пользу. Робот помог Пину на мастерской и аккуратно разложил чертежи для новых проектов.</p>
+            </div>
         </div>
 
         <div class="news-item">
             <img src="фото/новость3.jpg">
-            <p><b>«Нюша объявила фестиваль цветочных образов»</b>
+            <div class="news-content">
+                <p><b>«Нюша объявила фестиваль цветочных образов»</b>
 
-Нюша готовит большой фестиваль...
-            </p>
+Нюша готовит большой фестиваль, посвящённый цветочным нарядам. Она уверена, что каждый сможет проявить фантазию и создать уникальный образ, вдохновлённый ромашковыми луками и яркими бутонами долины.
+
+Участники уже шьют костюмы, а Бараш пишет торжественное стихотворение для открытия. Нюша обещает, что праздник объединит всех и добавит долине красок и лёгкого романтического настроения.</p>
+            </div>
         </div>
 
     </div>
